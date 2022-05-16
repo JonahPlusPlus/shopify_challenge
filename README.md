@@ -1,15 +1,18 @@
-# README
+# shopify_challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Just a basic backend application, and my first Ruby program!
 
 * Ruby version
 
+ruby 2.7.4p191
+
 * System dependencies
 
+ruby, rails, sqlite3, libsqlite3-dev
+
 * Configuration
+
+NA
 
 * Database creation
 
