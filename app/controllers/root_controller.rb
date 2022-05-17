@@ -6,6 +6,11 @@ class RootController < ApplicationController
   def checkout
     ActiveRecord::Base.transaction do
       order = Order.create(customer: params[:customer], destination: params[:destination])
+      if (JSON.parse(params[:requests]).length < 1)
+        render json: { error: "Need items for order" }, status: 400
+        raise ActiveRecord::Rollback
+        return
+      end
       for tup in JSON.parse(params[:requests]).each
         item = Item.find_by(name: tup[0])
         if (!!item)

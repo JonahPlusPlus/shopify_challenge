@@ -1,5 +1,3 @@
 #!/bin/bash
 
-rails db:create db:migrate
-
-rails dartsass:build
+rails db:drop db:create db:migrate dartsass:build

@@ -3,7 +3,7 @@
 <p>Page where customers can buy stuff</p>
 <a href="/inventory">Inventory Page</a>      <a href="/backlog">Backlog Page</a>
 <br><br>
-<p>Click on cards to add one of an item to your cart</p>
+<p>Click on cards to add one of an item to your cart (if you don't see any items, go to the inventory page and add some)</p>
 <div class="container overflow-hidden ">
     <% (0...@items.length).step(3).each do |i| %>
     <div class="row gx-5">
@@ -34,7 +34,7 @@
 </table>
 
 <h2>Checkout</h2>
-<%= form_with(url: "/checkout", method: "post", id: "orderForm") do %>
+<%= form_with(url: "/api/v1/checkout", method: "post", id: "orderForm") do %>
     <div class="mb-3">
         <%= label_tag(:customer, "Customer Name", class: "form-label") %>
         <%= text_field_tag(:customer, "", class: "form-control") %>
@@ -47,7 +47,7 @@
     <%= submit_tag("Order", class: "btn btn-primary") %>
 <% end %>
 <br>
-<p>After submitting an order, admins can view them on the backlog</p>
+<p>After submitting an order, admins can view them on the backlog page</p>
 
 
 <script type="text/javascript">
@@ -107,11 +107,13 @@ window.onload = function() {
             method: 'POST',
             body: new URLSearchParams(new FormData(event.target)) // event.target is the form
         }).then((resp) => {
-            return resp.json(); // or resp.text() or whatever the server sends
+          
         }).then((body) => {
-            // TODO handle body
+          if (body.error) {
+            alert(body.error);
+          }
         }).catch((error) => {
-            // TODO handle error
+          alert(error);
         });
     });
 };

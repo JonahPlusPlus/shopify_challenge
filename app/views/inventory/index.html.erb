@@ -23,7 +23,7 @@
     <% end %>
     <h2>Add Item to Inventory</h2>
     <p>Add quantity to store, or create item if it doesn't exist</p>
-    <%= form_with(url: "/additem", method: "post", id: "itemForm") do %>
+    <%= form_with(url: "/api/v1/additem", method: "post", id: "itemForm") do %>
         <div class="mb-3">
             <%= label_tag(:name, "Item Name", class: "form-label") %>
             <%= text_field_tag(:name, "", class: "form-control") %>
