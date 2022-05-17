@@ -1,0 +1,31 @@
+<br>
+<h1>Shopify Challenge: Backlog Page</h1>
+<p>Page where admins can view orders</p>
+<a href="/">Shopping Page</a>      <a href="/inventory">Inventory Page</a>
+<br><br>
+<p>Click on customers to view their orders</p>
+<div class="container overflow-hidden ">
+    <ul>
+    <% (0...@orders.length).each do |i| %>
+    <li><span class="caret"><%= @orders[i].customer %> @ <%= @orders[i].destination %></span>
+        <ul class="nested-tree">
+        <% requests = Request.where(order_id: @orders[i].id) %>
+        <% (0...requests.length).each do |j| %>
+            <li><%= requests[j].quantity %> <%= Item.find(requests[j].item_id).name %></li>
+        <% end %>
+        </ul>
+    </li>
+    <% end %>
+    </ul>
+    <script type="text/javascript">
+    var toggler = document.getElementsByClassName("caret");
+    var i;
+
+    for (i = 0; i < toggler.length; i++) {
+      toggler[i].addEventListener("click", function() {
+        this.parentElement.querySelector(".nested-tree").classList.toggle("active-tree");
+        this.classList.toggle("caret-down");
+      });
+    } 
+    </script>
+</div>

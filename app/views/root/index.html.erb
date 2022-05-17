@@ -1,0 +1,118 @@
+<br>
+<h1>Shopify Challenge: Shopping Page</h1>
+<p>Page where customers can buy stuff</p>
+<a href="/inventory">Inventory Page</a>      <a href="/backlog">Backlog Page</a>
+<br><br>
+<p>Click on cards to add one of an item to your cart</p>
+<div class="container overflow-hidden ">
+    <% (0...@items.length).step(3).each do |i| %>
+    <div class="row gx-5">
+        <div class="col card item clickable" onclick="addItem('<%= @items[i].name %>')">
+            <% store = Store.find_by(item_id: @items[i].id) %>
+            <%= @items[i].name %> (<% if store %><%= store.quantity %> in<% else %>out of<% end %> stock)
+        </div>
+        <% if i + 1 < @items.length() %>
+        <div class="col card item clickable" onclick="addItem('<%= @items[i+1].name %>')">
+            <% store = Store.find_by(item_id: @items[i+1].id) %>
+            <%= @items[i+1].name %> (<% if store %><%= store.quantity %> in<% else %>out of<% end %> stock)
+        </div>
+        <% end %>
+        <% if i + 2 < @items.length() %>
+        <div class="col card item clickable" onclick="addItem('<%= @items[i+2].name %>')">
+            <% store = Store.find_by(item_id: @items[i+2].id) %>
+            <%= @items[i+2].name %> (<% if store %><%= store.quantity %> in<% else %>out of<% end %> stock)
+        </div>
+        <% end %>
+    </div>
+    <% end %>
+</div>
+<br>
+<h2>Cart</h2>
+<p>Click on cart items to remove them.</p>
+<table class="table" id="cart" style="background-color:white">
+<thead><tr><th scope="col">Items</th><th scope="col">Quantity</th></tr></thead>
+</table>
+
+<h2>Checkout</h2>
+<%= form_with(url: "/checkout", method: "post", id: "orderForm") do %>
+    <div class="mb-3">
+        <%= label_tag(:customer, "Customer Name", class: "form-label") %>
+        <%= text_field_tag(:customer, "", class: "form-control") %>
+    </div>
+    <div class="mb-3">
+        <%= label_tag(:destination, "Destination Address", class: "form-label") %>
+        <%= text_field_tag(:destination, "", class: "form-control") %>
+    </div>
+    <%= hidden_field_tag(:requests, "", id: "requests") %>
+    <%= submit_tag("Order", class: "btn btn-primary") %>
+<% end %>
+<br>
+<p>After submitting an order, admins can view them on the backlog</p>
+
+
+<script type="text/javascript">
+let items_map = new Map();
+
+function addItem(item) {
+    if (items_map.has(item)) {
+        items_map.set(item, items_map.get(item)+1);
+    } else {
+        items_map.set(item, 1)
+    }
+    updateList();
+}
+
+function removeItem(item) {
+    if (items_map.has(item)) {
+        let a = items_map.get(item)-1;
+        if (a > 0) {
+            items_map.set(item, a);
+        } else {
+            items_map.delete(item);
+        }    
+        updateList();    
+    }
+}
+
+function replacer(key, value) {
+  if(value instanceof Map) {
+    return Array.from(value.entries());
+  } else {
+    return value;
+  }
+}
+
+function updateList() {
+    $("#requests").val(JSON.stringify(items_map, replacer));
+    let cart = $("#cart");
+    cart.html('<thead><tr><th scope="col">Items</th><th scope="col">Quantity</th></tr></thead>');
+    for (const [key, value] of items_map.entries()) {
+        let row = $('<tr>');
+        row.addClass("clickable");
+        row.click(function() { removeItem(key) });
+        let name_col = $('<td>').text(String(key));
+        let quantity_col = $('<td>').text(String(value));
+        row.append(name_col);
+        row.append(quantity_col);
+        cart.append(row);
+    }
+}
+
+window.onload = function() {
+    updateList();
+    document.forms['orderForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+            method: 'POST',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+            return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+            // TODO handle body
+        }).catch((error) => {
+            // TODO handle error
+        });
+    });
+};
+</script>

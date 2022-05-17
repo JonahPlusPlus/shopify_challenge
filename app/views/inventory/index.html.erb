@@ -1,0 +1,37 @@
+<br>
+<h1>Shopify Challenge: Inventory Page</h1>
+<p>Page where admins can check and manage inventory</p>
+<a href="/">Shopping Page</a>      <a href="/backlog">Backlog Page</a>
+<br><br>
+<div class="container overflow-hidden ">
+    <% (0...@stores.length).step(3).each do |i| %>
+    <div class="row gx-5">
+        <div class="col card item">
+            <%= @stores[i].quantity %> <%= Item.find(@stores[i].item_id).name %>
+        </div>
+        <% if i + 1 < @stores.length() %>
+        <div class="col card item">
+            <%= @stores[i+1].quantity %> <%= Item.find(@stores[i+1].item_id).name %>
+        </div>
+        <% end %>
+        <% if i + 2 < @stores.length() %>
+        <div class="col card item">
+            <%= @stores[i+2].quantity %> <%= Item.find(@stores[i+2].item_id).name %>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
+    <h2>Add Item to Inventory</h2>
+    <p>Add quantity to store, or create item if it doesn't exist</p>
+    <%= form_with(url: "/additem", method: "post", id: "itemForm") do %>
+        <div class="mb-3">
+            <%= label_tag(:name, "Item Name", class: "form-label") %>
+            <%= text_field_tag(:name, "", class: "form-control") %>
+        </div>
+        <div class="mb-3">
+            <%= label_tag(:quantity, "Quantity", class: "form-label") %>
+            <%= number_field_tag(:quantity, "", class: "form-control", min: 1) %>
+        </div>
+        <%= submit_tag("Add Item", class: "btn btn-primary") %>
+    <% end %>
+</div>

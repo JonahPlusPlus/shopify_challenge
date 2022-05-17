@@ -1,0 +1,54 @@
+// Sassy
+body {
+    background-color: floralwhite !important;
+}
+
+.item {
+    background-color: white;
+    min-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    user-select: none;
+}
+
+.clickable {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+th, td {
+    text-align: center !important;
+    user-select: none;
+
+}
+
+
+ul {
+    list-style-type: none !important;
+    user-select: none;
+}
+
+.caret {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+    &::before {
+        content: "\25B6";
+        color: black;
+        display: inline-block;
+        margin-right: 6px;
+    }
+}
+
+.caret-down::before {
+    transform: rotate(90deg);
+}
+
+.nested-tree {
+    display: none !important;
+}
+
+.active-tree {
+    display: block !important;
+}
+
