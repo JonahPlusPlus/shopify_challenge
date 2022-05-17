@@ -18,6 +18,6 @@ module ShopifyChallenge
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.hosts << /[a-z0-9]+\.id\.repl\.co/
+    config.hosts << /[a-z0-9\-]+\.id\.repl\.co/
   end
 end
