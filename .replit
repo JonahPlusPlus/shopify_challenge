@@ -1,4 +1,4 @@
-run = ["rails", "server", "--binding=0.0.0.0"]
+run = ["bin/rails", "server", "--binding=0.0.0.0"]
 
 entrypoint = "app/controllers/application_controller.rb"
 
