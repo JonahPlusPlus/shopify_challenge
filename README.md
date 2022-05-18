@@ -2,7 +2,9 @@
 
 Just a basic backend application, and my first Ruby program!
 
-## Running on replit
+Made in just 2 days! Learned Ruby and Rails in that time! (Had experience with REST, SQL, templating (Handlebars), and Node.JS in the past, so it was really just learning how MVC worked and the syntax)
+
+### Running on replit
 
 1. Fork the repl
 2. Initialize with `sh init.sh` in the console/shell (drops, creates and migrates database + processes SCSS) (optional, try running the repl first without it)
@@ -16,7 +18,7 @@ You don't have to run `sh init.sh`, it's just for rebuilding the project (and ke
 
 If you have an issue with RAM usage, just run `kill 1` in the shell and reload the page.
 
-## Instructions on how to use the site
+### Instructions on how to use the site
 
 There are three pages for interacting with the site: Shopping ("/"), Inventory ("/inventory") and Backlog ("/backlog")
 
@@ -26,7 +28,7 @@ Then, a customer would use the Shopping page to add items (click on the cards) t
 
 To see the orders, admins can go to the Backlog page. By clicking on customers, they can see their order.
 
-## Internal Design
+### Internal Design
 
 There are 4 tables/models: Item, Store, Order, Request. 
 * Item stores the names of goods.
@@ -65,3 +67,5 @@ In the future, this app could be extended to have an `removeitem` API for admins
 There could also be an API to fulfill orders or rollback canceled orders.
 
 There is no proper security on this site, there would have to be token authorization to make the API secure, which would involve storing User accounts and salted+hashed passwords
+
+Make the page refresh automatically; didn't do it since it would be easiest with AJAX, but didn't want to spend any more time before submitting
