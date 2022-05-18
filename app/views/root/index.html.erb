@@ -100,21 +100,5 @@ function updateList() {
 
 window.onload = function() {
     updateList();
-    document.forms['orderForm'].addEventListener('submit', (event) => {
-        event.preventDefault();
-        // TODO do something here to show user that form is being submitted
-        fetch(event.target.action, {
-            method: 'POST',
-            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-        }).then((resp) => {
-          
-        }).then((body) => {
-          if (body.error) {
-            alert(body.error);
-          }
-        }).catch((error) => {
-          alert(error);
-        });
-    });
 };
 </script>
