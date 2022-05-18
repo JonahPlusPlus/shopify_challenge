@@ -4,7 +4,9 @@ class InventoryController < ApplicationController
     @stores = Store.all
   end
 
-  # POST /additem
+  # POST api/v1/additem
+  # Create item in items if it doesn't exist, and adds quantity to item's Store
+  # Fails if quantity is not positive or no name is passed
   def additem
     ActiveRecord::Base.transaction do
       if params[:name].length < 1 || params[:quantity].to_i < 1
