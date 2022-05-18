@@ -23,7 +23,7 @@ If none of that works, just try **`busybox reboot`** and select `busybox.out` fr
 
 ### Instructions on how to use the site
 
-There are three pages for interacting with the site: Shopping ("/"), Inventory ("/inventory") and Backlog ("/backlog")
+There are three pages for interacting with the site: Shopping (`/`), Inventory (`/inventory/`) and Backlog (`/backlog/`)
 
 First thing to do is create items to buy. An admin would go to the Inventory page and add items (name and quantity) to the inventory.
 
