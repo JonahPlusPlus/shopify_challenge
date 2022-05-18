@@ -19,6 +19,8 @@ You don't have to run `sh init.sh`, it's just for rebuilding the project (and ke
 
 If you have an issue with RAM usage, just run **`kill 1`** in the shell and reload the page.
 
+If none of that works, just try **`busybox reboot`** and select `busybox.out` from the list of commands, or just give it 5-10 minutes for replit.com to fix itself (yeah, had an issue once where it just resolved itself with time)
+
 ### Instructions on how to use the site
 
 There are three pages for interacting with the site: Shopping ("/"), Inventory ("/inventory") and Backlog ("/backlog")
