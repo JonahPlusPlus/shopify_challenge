@@ -2,7 +2,7 @@
 
 Just a basic backend application, and my first Ruby program!
 
-Made in just 2 days! Learned Ruby and Rails in that time! (Had experience with REST, SQL, templating (Handlebars), and Node.JS in the past, so it was really just learning how MVC worked and the syntax)
+Made in just 2 days! Learned Ruby and Rails in that time! (Had experience with REST, SQL, templating (Handlebars), Node.JS and a couple Rust web frameworks in the past, so it was really just learning how MVC worked and the syntax)
 
 ### Running on replit
 
