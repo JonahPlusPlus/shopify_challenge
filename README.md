@@ -9,7 +9,7 @@ Made in just 2 days! Learned Ruby and Rails in that time! (Had experience with R
 1. Fork the repl
 2. Initialize with **`sh init.sh`** in the console/shell *(drops, creates and migrates database + processes SCSS; give some time to run)* *(**optional** (?, databases are gitignored, so who knows if replit would fork them as well), try running the repl first without it to get a sense of what the site looks like)*
 3. Run the repl project
-4. Open in new tab *(**optional**, replit hides the relative path of pages, but opening it in a tab lets you see the full URL)* or open the repl in incognito (https://replit.com/@JonahHenriksson/shopifychallenge) (for some reason, Firefox is perfectly fine with the site in the iframe, but Chrome freaks out and opening the repl logged out in incognito while it is running works)
+4. Open in new tab *(**optional**, replit hides the relative path of pages, but opening it in a tab lets you see the full URL, and reloading doesn't take you back to the Shopping page)* or open the repl in incognito (https://replit.com/@JonahHenriksson/shopifychallenge) (for some reason, Firefox is perfectly fine with the site in the iframe, but Chrome freaks out and opening the repl logged out in incognito while it is running works)
 
 ### Possible issues that may occur (and hopefully how to fix them)
 
