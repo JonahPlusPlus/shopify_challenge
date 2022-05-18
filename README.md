@@ -15,7 +15,7 @@ Made in just 2 days! Learned Ruby and Rails in that time! (Had experience with R
 
 You got to fork the repl in order to run the project. Otherwise, it won't load or you'll get some sort of blocking issue. It works the same as with replit's Rails template. If you fork it and you don't see anything, try opening in a new tab. If that failed, the URL probably didn't match the regex in "/config/application.rb".
 
-You don't have to run `sh init.sh`, it's just for rebuilding the project (and keeping my sanity). But if you want to start with an empty database, or if the CSS looks weird, run it. Also, `./init.sh` will fail due to permission issues, so you got to call `sh` directly.
+You don't have to run `sh init.sh`, it's just for rebuilding the project (and keeping my sanity). But if you want to start with an empty database, or if the CSS looks weird, run it. Also, `./init.sh` will fail due to permission issues, so you got to call it through `sh` directly.
 
 If you have an issue with RAM usage, just run **`kill 1`** in the shell and reload the page.
 
