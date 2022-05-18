@@ -4,6 +4,9 @@ Just a basic backend application, and my first Ruby program!
 
 Made in just 2 days! Learned Ruby and Rails in that time! (Had experience with REST, SQL, templating (Handlebars), Node.JS and a couple Rust web frameworks in the past, so it was really just learning how MVC worked and the syntax)
 
+### Chosen Optional Requirement
+I went with the third option, adding "shipments". Shipments in my webapp are called "orders" and each order owns a number of "requests" which store the items and quantities ordered.
+
 ### Running on replit
 
 1. Fork the repl
