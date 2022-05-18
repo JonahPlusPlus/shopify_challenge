@@ -7,7 +7,7 @@ Made in just 2 days! Learned Ruby and Rails in that time! (Had experience with R
 ### Running on replit
 
 1. Fork the repl
-2. Initialize with **`sh init.sh`** in the console/shell *(drops, creates and migrates database + processes SCSS)* *(**optional**, try running the repl first without it to get a sense of what the site looks like)*
+2. Initialize with **`sh init.sh`** in the console/shell *(drops, creates and migrates database + processes SCSS; give some time to run)* *(**optional**, try running the repl first without it to get a sense of what the site looks like)*
 3. Run the repl project
 4. Open in new tab *(**optional**, replit hides the relative path of pages, but opening it in a tab lets you see the full URL)*
 
