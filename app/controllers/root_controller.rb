@@ -8,6 +8,11 @@ class RootController < ApplicationController
   # Fails when there aren't any requests, out of stock, or bad API request
   def checkout
     ActiveRecord::Base.transaction do
+      unless (params.has_key?(:customer) && params.has_key?(:destination) && params.has_key?(:requests))
+        render json: { error: "Need params" }, status: 400
+        raise ActiveRecord::Rollback
+        return
+      end
       if (params[:customer].length < 1 || params[:destination].length < 1)
         render json: { error: "Need proper customer and destination" }, status: 400
         raise ActiveRecord::Rollback

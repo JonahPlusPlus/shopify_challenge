@@ -9,6 +9,11 @@ class InventoryController < ApplicationController
   # Fails if quantity is not positive or no name is passed
   def additem
     ActiveRecord::Base.transaction do
+      unless (params.has_key?(:name) && params.has_key?(:quantity))
+        render json: { error: "Need params" }, status: 400
+        raise ActiveRecord::Rollback
+        return
+      end
       if params[:name].length < 1 || params[:quantity].to_i < 1
         render json: { error: "Failed to update item quantity" }, status: 400
         raise ActiveRecord::Rollback
@@ -24,7 +29,7 @@ class InventoryController < ApplicationController
       else
         Store.update(@store.id, quantity: @store.quantity + params[:quantity].to_i)
       end
+      render json: { message: "Successfully updated item quantity" }
     end
-    render json: { message: "Successfully updated item quantity" }
   end
 end

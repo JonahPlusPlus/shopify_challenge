@@ -86,3 +86,5 @@ There is no proper security on this site, there would have to be token authoriza
 Make the page refresh automatically; didn't do it since it would be easiest with AJAX, but didn't want to spend any more time before submitting adding new dependencies
 
 Could store failed API calls for logistic purposes
+
+Do maximum value checks for proper constraints
