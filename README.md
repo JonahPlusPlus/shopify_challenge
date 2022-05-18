@@ -7,8 +7,9 @@ Made in just 2 days! Learned Ruby and Rails in that time! (Had experience with R
 ### Running on replit
 
 1. Fork the repl
-2. Initialize with `sh init.sh` in the console/shell (drops, creates and migrates database + processes SCSS) (optional, try running the repl first without it)
+2. Initialize with **`sh init.sh`** in the console/shell *(drops, creates and migrates database + processes SCSS)* *(**optional**, try running the repl first without it to get a sense of what the site looks like)*
 3. Run the repl project
+4. Open in new tab *(**optional**, replit hides the relative path of pages, but opening it in a tab lets you see the full URL)*
 
 ### Possible issues that may occur (and hopefully how to fix them)
 
@@ -16,7 +17,7 @@ You got to fork the repl in order to run the project. Otherwise, it won't load o
 
 You don't have to run `sh init.sh`, it's just for rebuilding the project (and keeping my sanity). But if you want to start with an empty database, or if the CSS looks weird, run it. Also, `./init.sh` will fail due to permission issues, so you got to call `sh` directly.
 
-If you have an issue with RAM usage, just run `kill 1` in the shell and reload the page.
+If you have an issue with RAM usage, just run **`kill 1`** in the shell and reload the page.
 
 ### Instructions on how to use the site
 
@@ -27,6 +28,8 @@ First thing to do is create items to buy. An admin would go to the Inventory pag
 Then, a customer would use the Shopping page to add items (click on the cards) to their cart (to remove, just click on items in the cart). They can then put in their name and address and submit their order.
 
 To see the orders, admins can go to the Backlog page. By clicking on customers, they can see their order.
+
+**NOTE: In order to see changes, you need to refresh the page manually, I didn't add any auto-refresh to the frontend**
 
 ### Internal Design
 
@@ -48,7 +51,8 @@ All API paths are located in `/api/v1/`
 * `additem`
 
 Resource APIs directly modify tables with CRUD commands
-Ex:
+
+For example, the `items` resource:
 * CREATE: `POST /items/`
 * READ: `GET /items/` or `GET /items/:id`
 * UPDATE: `PUT /items/:id`
@@ -56,9 +60,18 @@ Ex:
 
 Rather than use CRUD commands directly (which would be difficult to secure), the webapp uses a mixture of templating and specific transactional API calls (if something goes wrong in the API call, all changes to the database are rolled back)
 
+Transactional API calls:
+
 `/api/v1/checkout` is used on the Shopping page to create an order
 
 `/api/v1/additem` is used on the Inventory page to add items to inventory
+
+### Language, Frameworks & Dependencies
+* Ruby, as language of choice
+* Rails, for server framework (since Shopify uses it, I figured it would be good if I did too)
+* Bootstrap, for basic styling
+* JQuery, for easier JS
+* dartsass-rails, for CSS preprocessing
 
 ### TODO
 
@@ -68,4 +81,4 @@ There could also be an API to fulfill orders or rollback canceled orders.
 
 There is no proper security on this site, there would have to be token authorization to make the API secure, which would involve storing User accounts and salted+hashed passwords
 
-Make the page refresh automatically; didn't do it since it would be easiest with AJAX, but didn't want to spend any more time before submitting
+Make the page refresh automatically; didn't do it since it would be easiest with AJAX, but didn't want to spend any more time before submitting adding new dependencies
